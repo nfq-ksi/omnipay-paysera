@@ -8,8 +8,6 @@
 
 namespace Omnipay\Paysera\Common;
 
-use Guzzle\Http\ClientInterface;
-
 /**
  * Class SignatureValidator
  *
@@ -21,13 +19,13 @@ class SignatureValidator
     const ENDPOINT = 'http://www.paysera.com/download/public.key';
 
     /**
-     * @param array           $data
-     * @param string          $password
-     * @param ClientInterface $client
+     * @param array                                $data
+     * @param string                               $password
+     * @param \Omnipay\Common\Http\ClientInterface $client
      *
      * @return bool
      */
-    public static function isValid(array $data, $password, ClientInterface $client)
+    public static function isValid(array $data, $password, \Omnipay\Common\Http\ClientInterface $client)
     {
         return self::isValidSS1($data, $password) && self::isValidSS2($data, $client);
     }
@@ -44,14 +42,14 @@ class SignatureValidator
     }
 
     /**
-     * @param array           $data
-     * @param ClientInterface $client
+     * @param array                                $data
+     * @param \Omnipay\Common\Http\ClientInterface $client
      *
      * @return bool
      */
-    private static function isValidSS2(array $data, ClientInterface $client)
+    private static function isValidSS2(array $data, \Omnipay\Common\Http\ClientInterface $client)
     {
-        $response = $client->get(self::ENDPOINT)->send();
+        $response = $client->request('GET', self::ENDPOINT);
         if (200 === $response->getStatusCode() && false !== $publicKey = openssl_get_publickey($response->getBody())) {
             return 1 === openssl_verify($data['data'], Encoder::decode($data['ss2']), $publicKey);
         }
