@@ -18,11 +18,11 @@ use Omnipay\Paysera\Message\PurchaseRequest;
 class PurchaseDataGenerator
 {
     /**
-     * @param PurchaseRequest $request
+     * @param $request
      *
      * @return string
      */
-    public static function generate(PurchaseRequest $request)
+    public static function generate($request)
     {
         $parameters = array(
             'projectid' => $request->getProjectId(),
