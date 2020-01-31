@@ -107,4 +107,14 @@ class CompletePurchaseRequest extends AbstractRequest
     {
         return $this->setParameter('language', $value);
     }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function setPaymentMethod($value)
+    {
+        return $this->setParameter('paymentMethod', $value);
+    }
 }

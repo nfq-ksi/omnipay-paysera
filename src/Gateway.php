@@ -95,6 +95,45 @@ class Gateway extends AbstractGateway
         return $this->setParameter('version', $value);
     }
 
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function setPaymentMethod($value)
+    {
+        return $this->setParameter('paymentMethod', $value);
+    }
+
+
+    /**
+     * @return string
+     */
+    public function getPaymentMethod()
+    {
+        return $this->getParameter('paymentMethod');
+    }
+    
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function setLanguage($value)
+    {
+        return $this->setParameter('language', $value);
+    }
+
+
+    /**
+     * @return string
+     */
+    public function getLanguage()
+    {
+        return $this->getParameter('language');
+    }
+
     /**
      * @param array $parameters
      *
