@@ -117,4 +117,22 @@ class CompletePurchaseRequest extends AbstractRequest
     {
         return $this->setParameter('paymentMethod', $value);
     }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function setClientEmail($value)
+    {
+        return $this->setParameter('clientEmail', $value);
+    }
+
+    /**
+     * @return string
+     */
+    public function getClientEmail()
+    {
+        return $this->getParameter('clientEmail');
+    }
 }

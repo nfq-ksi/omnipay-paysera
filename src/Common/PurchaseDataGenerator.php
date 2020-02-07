@@ -36,6 +36,7 @@ class PurchaseDataGenerator
             'amount' => $request->getAmountInteger(),
             'currency' => $request->getCurrency(),
             'test' => $request->getTestMode() ? '1' : '0',
+            'p_email' => $request->getClientEmail(),
         );
 
         if (null !== $card = $request->getCard()) {
